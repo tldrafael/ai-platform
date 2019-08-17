@@ -1,0 +1,20 @@
+name: carvana_masking
+
+conda_env: conda.yaml
+
+entry_points:
+  train:
+    parameters:
+      optimizer: {type: string, default: 'adam'}
+      epochs: {type: int, default: 10}
+      batch_size: {type: int, default: 8}
+    command:
+      python main.py train {optimizer} {epochs} {batch_size}
+
+  predict:
+    parameters:
+      uri: {type: string, default: None}
+      imgpath: {type: string, default: None}
+    command:
+      python main.py predict {uri} {imgpath}
+
